@@ -1,0 +1,19 @@
+@import '../../_css/queries.scss';
+
+.home {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 100px;
+  padding-right: 0;
+  padding-left: 0;
+
+  @include mid-break {
+    gap: 5px;
+  }
+}
+
+.center {
+  width: 100%;
+}

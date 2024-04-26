@@ -1,0 +1,3 @@
+thenesquikoutlet.co.za {
+  reverse_proxy payload:3000
+}

@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@200..700&display=swap");
+
+.body {
+  background: whitesmoke;
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
+  font-family: "Yanone Kaffeesatz", sans-serif;
+  font-weight: 100;
+  font-size: 20px;
+
+  #paymentForm {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .form-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      justify-content: space-between;
+    }
+    input,
+    button {
+      font-family: inherit;
+      font-weight: inherit;
+      font-size: inherit;
+      outline: none;
+      border: none;
+      padding: 0.5rem 1rem;
+
+      &:hover,
+      &:focus {
+        box-shadow: 0 0 0 1px rgba($color: #000000, $alpha: 0.6);
+      }
+    }
+
+    button {
+      cursor: pointer;
+    }
+  }
+}

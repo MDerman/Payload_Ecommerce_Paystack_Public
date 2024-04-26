@@ -1,0 +1,95 @@
+services:
+  payload:
+    image: node:18-alpine
+    container_name: payload
+    volumes:
+      - .:/home/node/app
+      - node_modules:/home/node/app/node_modules
+    working_dir: /home/node/app/
+    command: sh -c "yarn install && yarn dev"
+#    logging:
+#      driver: gelf
+#      options:
+#        gelf-address: "udp://127.0.0.1:12201"
+#    depends_on:
+#      - logstash
+    env_file:
+      - .env
+    restart:
+      always
+    ports:
+      - "3000:3000"
+    network_mode: host
+
+#  elasticsearch:
+#    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.13
+#    container_name: elasticsearch
+#    environment:
+#      - discovery.type=single-node
+#      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
+#    ports:
+#      - "9200:9200"
+#      - "9300:9300"
+#    networks:
+#      - nesquiknetwork
+#    deploy:
+#      resources:
+#        limits:
+#          memory: 256M
+#
+#  logstash:
+#    image: docker.elastic.co/logstash/logstash:7.17.13
+#    volumes:
+#      - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
+#      - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
+#    ports:
+#      - "12201:12201/udp"
+#    environment:
+#      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+#    depends_on:
+#      - elasticsearch
+#    networks:
+#      - nesquiknetwork
+#    deploy:
+#      resources:
+#        limits:
+#          memory: 256M
+#
+#  kibana:
+#    image: docker.elastic.co/kibana/kibana:7.17.13
+#    container_name: kibana
+#    ports:
+#      - "5601:5601"
+#    networks:
+#      - nesquiknetwork
+#    volumes:
+#      - ./kibana/config/:/usr/share/kibana/config:ro
+#    depends_on:
+#      - logstash
+#      - elasticsearch
+
+#  caddy:
+#    image: caddy/caddy:latest
+#    container_name: caddy
+#    networks:
+#      - payload
+#    ports:
+#      - "80:80"
+#      - "443:443"
+#    volumes:
+#      - ./Caddyfile:/etc/caddy/Caddyfile
+#      - caddy_data:/data
+#      - caddy_config:/config
+#    depends_on:
+#      - payload
+#    restart: always
+#
+#
+#networks:
+#  payload:
+#    driver: bridge
+#
+volumes:
+#  caddy_data:
+#  caddy_config:
+  node_modules:

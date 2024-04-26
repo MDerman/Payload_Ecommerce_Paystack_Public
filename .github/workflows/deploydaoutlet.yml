@@ -1,0 +1,50 @@
+name: Deploy Master to VPS
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+
+jobs:
+ deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: SSH and docker compose
+      uses: appleboy/ssh-action@master
+
+      with:
+        host: HOSTNAME ENTER HERE
+        username: root
+        password: ${{ secrets.SSH_PASSWORD }}
+        script: |
+          #Install docker if it isn't installed (docker images command fails)
+          docker images > /dev/null 2>&1
+          # Check if the command failed
+          if [ $? -ne 0 ]; then
+              # Download the Docker installation script
+              curl -fsSL https://get.docker.com -o get-docker.sh
+
+              # Execute the Docker installation script
+              sudo sh get-docker.sh
+          else
+              echo "Docker is already installed."
+          fi
+          git clone https://${{ secrets.PAT }}@github.com/MDerman/the-nesquik-outlet.git
+          cd the-nesquik-outlet
+          git reset --hard origin/HEAD
+          git fetch origin --recurse-submodules --progress --prune
+          #git pull is basically fetch + merge, but why does this job always leave me a few commits behind?
+          git pull --no-rebase
+          # Remove non-running containers, volumes, and networks
+          docker system prune -a -f
+          # Then, bring down all services in the docker-compose file
+          docker compose down --rmi all
+          # Finally, recreate the services
+          #docker compose -f ./docker-compose.yml up --force-recreate -d 2>&1
+          docker compose -f ./docker-compose.yml up --force-recreate
+

@@ -1,0 +1,39 @@
+@import '../../../_css/common';
+
+.form {
+  margin-bottom: var(--base);
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--base) / 2);
+  align-items: flex-start;
+  width: 50%;
+
+  @include mid-break {
+    width: 80%;
+  }
+}
+
+.formcontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Horizontal centering */
+  align-items: center; /* Vertical centering */
+}
+
+.buttons {
+  display: flex;
+  margin-top: 20px;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.changePassword {
+  all: unset;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.submit {
+  margin-top: calc(var(--base) / 2);
+}

@@ -1,0 +1,15 @@
+[Unit]
+Description=Docker Compose thenesquikoutlet
+Requires=snap.docker.dockerd.service
+After=snap.docker.dockerd.service
+
+[Service]
+WorkingDirectory=/root/thenesquikoutlet
+ExecStart=/snap/bin/docker-compose -f /root/thenesquikoutlet/docker-compose.yml up -d --build
+ExecStop=/snap/bin/docker-compose -f /root/thenesquikoutlet/docker-compose.yml down --build
+Type=oneshot
+RemainAfterExit=true
+StandardOutput=syslog
+
+[Install]
+WantedBy=multi-user.target

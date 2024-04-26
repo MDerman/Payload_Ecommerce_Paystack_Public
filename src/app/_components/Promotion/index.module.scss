@@ -1,0 +1,69 @@
+@use '../../_css/queries.scss' as *;
+
+.promotion {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  grid-template-columns: 50% 1fr;
+  gap: 30px;
+  margin-bottom: 0;
+
+  @include small-break {
+    grid-template-columns: 1fr;
+  }
+}
+
+.p{
+  align-self: center;
+}
+
+.title {
+  align-self: center;
+  font-weight: 400;
+}
+
+.textBox {
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+}
+
+.image {
+  min-height: 500px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.dealBtn {
+  width: fit-content;
+  align-self: center;
+  @include mid-break {
+    width: 100%;
+  }
+}
+
+.stats {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(4, 100px);
+
+  @include large-break {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.statBox {
+  border-radius: 10px;
+  border: 2px solid darkturquoise;
+  padding: 16px;
+  min-width: 100px;
+  width: 100%;
+  text-align: center;
+
+  h4 {
+    font-weight: bold;
+  }
+}

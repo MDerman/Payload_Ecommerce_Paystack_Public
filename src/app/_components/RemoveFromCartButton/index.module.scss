@@ -1,0 +1,7 @@
+@import '../../_css/common';
+
+.removeFromCartButton {
+  all: unset; //removes all orignal button styles
+  cursor: pointer;
+  @extend %label;
+}

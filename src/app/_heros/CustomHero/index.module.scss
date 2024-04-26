@@ -1,0 +1,82 @@
+@import '../../_css/queries.scss';
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 45vh;
+}
+
+.heroWrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.heroTextBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10%;
+  width: 100%;
+
+  @include mid-break {
+    padding: 10% 30px;
+  }
+
+  @include small-break {
+    padding: 50px 30px;
+  }
+
+  h2 {
+    font-size: 70px;
+    margin: 32px 0;
+
+    @include mid-break {
+      font-size: 48px;
+      margin: 24px 0;
+      white-space: wrap;
+    }
+
+    @include small-break {
+      width: 70%;
+      font-size: 36px;
+      margin: 8px 0;
+    }
+  }
+
+  p {
+    font-size: 30px;
+
+    @include mid-break {
+      font-size: 24px;
+    }
+
+    @include small-break {
+      font-size: 18px;
+    }
+  }
+}
+
+.links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  padding-top: 50px;
+  flex-wrap: wrap;
+  margin: calc(var(--base) * -0.5);
+
+  & > * {
+    margin: calc(var(--base) / 2);
+  }
+}

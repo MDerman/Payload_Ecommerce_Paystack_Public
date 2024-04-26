@@ -1,0 +1,24 @@
+@import '../../_css/common';
+
+.container {
+  width: 100%;
+}
+
+.products {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  flex-direction: column;
+  justify-content: center; /* Aligns items along the main axis (vertical in this case) */
+  align-items: center; /* Aligns items along the cross axis (horizontal in this case) */
+  margin: 0;
+  padding: 0;
+  //grid-template-columns: 1fr 1fr; /* This creates two equally sized columns */
+  gap: 60px; /* Adjusts the gap between grid items */
+
+  //@include large-break {
+  //  grid-template-columns: 1fr 1fr; /* Ensures two columns on larger screens as well */
+  //  gap: 48px; /* Adjusts the gap for larger screens */
+  //}
+}
+
