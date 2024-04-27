@@ -3,7 +3,6 @@ dist
 /media
 node_modules
 .DS_Store
-.env
 .next
 .vercel
 /.idea/.idea.Payload_Ecommerce_Paystack_Public.dir/.idea/workspace.xml
